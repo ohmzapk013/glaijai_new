@@ -112,9 +112,6 @@ export default function MemberLoginPage() {
                     <Link href="/register" className="text-sm text-pink-600 hover:text-pink-700 transition-colors block">
                         ยังไม่มีบัญชี? สมัครสมาชิก
                     </Link>
-                    <Link href="/forgot-password" className="text-sm text-gray-500 hover:text-pink-600 transition-colors block">
-                        ลืมรหัสผ่าน?
-                    </Link>
                     <Link href="/" className="text-sm text-gray-500 hover:text-pink-600 transition-colors block">
                         ← กลับหน้าหลัก
                     </Link>
