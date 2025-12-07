@@ -13,6 +13,8 @@ interface Category {
     title_en: string;
     description_th: string;
     description_en: string;
+    instructions_th?: string;
+    instructions_en?: string;
     iconClass?: string;
     iconColor?: string;
     questionCount?: number;
@@ -30,6 +32,8 @@ export default function CategoriesPage() {
     const [titleEn, setTitleEn] = useState("");
     const [descriptionTh, setDescriptionTh] = useState("");
     const [descriptionEn, setDescriptionEn] = useState("");
+    const [instructionsTh, setInstructionsTh] = useState("");
+    const [instructionsEn, setInstructionsEn] = useState("");
     const [iconClass, setIconClass] = useState("");
     const [iconColor, setIconColor] = useState("text-pink-500");
     const [editingId, setEditingId] = useState<string | null>(null);
@@ -120,6 +124,8 @@ export default function CategoriesPage() {
         setTitleEn(category.title_en);
         setDescriptionTh(category.description_th);
         setDescriptionEn(category.description_en);
+        setInstructionsTh(category.instructions_th || "");
+        setInstructionsEn(category.instructions_en || "");
         setIconClass(category.iconClass || "");
         setIconColor(category.iconColor || "text-pink-500");
         setIsModalOpen(true);
@@ -133,6 +139,8 @@ export default function CategoriesPage() {
         setTitleEn("");
         setDescriptionTh("");
         setDescriptionEn("");
+        setInstructionsTh("");
+        setInstructionsEn("");
         setIconClass("");
         setIconColor("text-pink-500");
     };
@@ -151,6 +159,8 @@ export default function CategoriesPage() {
                 title_en: titleEn,
                 description_th: descriptionTh,
                 description_en: descriptionEn,
+                instructions_th: instructionsTh,
+                instructions_en: instructionsEn,
                 iconClass,
                 iconColor,
             };
@@ -213,6 +223,8 @@ export default function CategoriesPage() {
                         setIconClass("");
                         setIconColor("text-pink-500");
                         setIsModalOpen(true);
+                        setInstructionsTh("");
+                        setInstructionsEn("");
                     }}
                     className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2"
                 >
@@ -336,6 +348,29 @@ export default function CategoriesPage() {
                                 className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none"
                                 placeholder="Short description"
                                 rows={2}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Instructions (TH)</label>
+                            <textarea
+                                value={instructionsTh}
+                                onChange={(e) => setInstructionsTh(e.target.value)}
+                                className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none"
+                                placeholder="วิธีการเล่น / คำแนะนำ (แสดง Popup ก่อนเริ่ม)"
+                                rows={3}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Instructions (EN)</label>
+                            <textarea
+                                value={instructionsEn}
+                                onChange={(e) => setInstructionsEn(e.target.value)}
+                                className="w-full px-4 py-2 rounded-xl border border-gray-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none"
+                                placeholder="Instructions / Game Rules"
+                                rows={3}
                             />
                         </div>
                     </div>

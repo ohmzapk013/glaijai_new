@@ -23,6 +23,8 @@ interface Category {
     title_en: string;
     description_th: string;
     description_en: string;
+    instructions_th?: string;
+    instructions_en?: string;
     iconClass?: string;
     iconColor?: string;
 }
@@ -43,6 +45,7 @@ export default function GamePage() {
     const [isReviewOpen, setIsReviewOpen] = useState(false);
     const [member, setMember] = useState<any>(null);
     const [isCurrentCardRevealed, setIsCurrentCardRevealed] = useState(false);
+    const [showIntroModal, setShowIntroModal] = useState(true);
     const hasTrackedVisit = useRef(false);
 
     // Check if user is logged in
@@ -309,7 +312,7 @@ export default function GamePage() {
     }
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="h-[100dvh] w-full flex flex-col overflow-hidden bg-white supports-[height:100dvh]:h-[100dvh] supports-[height:100svh]:h-[100svh]">
             <FloatingHearts />
 
             <div className="relative p-6 text-center space-y-2">
@@ -353,7 +356,7 @@ export default function GamePage() {
                 </AnimatePresence>
             </div>
 
-            <div className="p-4 space-y-4">
+            <div className="p-4 space-y-4 relative z-10 bg-white/50 backdrop-blur-sm">
                 {questions.length > 0 && (
                     <div className="flex items-center justify-center gap-6">
                         <button
@@ -396,6 +399,38 @@ export default function GamePage() {
                 onClose={handleReviewClose}
                 onSubmit={handleReviewSubmit}
             />
+
+            {/* Intro Modal */}
+            <AnimatePresence>
+                {category && (category.instructions_th || category.instructions_en) && showIntroModal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
+                        >
+                            <div className="p-6 text-center">
+                                <div className="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <Heart className="w-8 h-8 fill-current" />
+                                </div>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                                    {t(category.title_th, category.title_en)}
+                                </h2>
+                                <div className="text-gray-600 mb-6 text-sm leading-relaxed whitespace-pre-line">
+                                    {t(category.instructions_th || category.description_th, category.instructions_en || category.description_en)}
+                                </div>
+                                <button
+                                    onClick={() => setShowIntroModal(false)}
+                                    className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-xl transition-transform active:scale-95"
+                                >
+                                    {t("เริ่มเล่น", "Start Game")}
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

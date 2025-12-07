@@ -349,10 +349,10 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-pink-600 dark:text-pink-400 mb-3">
-            {t("ใกล้ใจ Glai Jai", "Glai Jai")}
+            {t("ใกล้ใจ", "Glai Jai")}
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
-            {t("รวมการ์ดคำถามสำหรับการ Deep Talking ของทุกคู่รักในความสัมพันธ์", "Deep conversation starters for you and your special someone.")}
+          <p className="text-gray-600 dark:text-gray-600 text-lg">
+            {t("รวมการ์ดคำถามสำหรับการ Deep Talking ของทุกคู่รักและครอบครัวในความสัมพันธ์", "Deep conversation starters for you and your special someone.")}
           </p>
         </div>
 

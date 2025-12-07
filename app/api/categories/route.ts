@@ -84,6 +84,8 @@ export async function POST(request: Request) {
             description_en: data.description_en?.trim() || "",
             iconClass: data.iconClass?.trim() || "",
             iconColor: data.iconColor?.trim() || "pink-500",
+            instructions_th: data.instructions_th?.trim() || "",
+            instructions_en: data.instructions_en?.trim() || "",
             createdAt: new Date().toISOString(),
         };
 

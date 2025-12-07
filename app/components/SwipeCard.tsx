@@ -57,7 +57,7 @@ export default function SwipeCard({ question, onSwipe, onReveal, currentIndex, t
             onTap={handleReveal}
             animate={exitX !== 0 ? { x: exitX } : {}}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="absolute w-full max-w-sm h-96 select-none"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md h-[90%] max-h-[600px] select-none touch-none"
         >
             <motion.div
                 className="relative w-full h-full"
@@ -67,7 +67,7 @@ export default function SwipeCard({ question, onSwipe, onReveal, currentIndex, t
             >
                 {/* Front Side (Hidden Question) */}
                 <div
-                    className="absolute w-full h-full bg-gradient-to-br from-pink-400 to-pink-500 rounded-3xl shadow-2xl flex items-center justify-center p-8 cursor-pointer"
+                    className="absolute w-full h-full bg-gradient-to-br from-pink-400 to-pink-500 rounded-3xl shadow-2xl flex items-center justify-center p-6 sm:p-8 cursor-pointer"
                     style={{
                         backfaceVisibility: "hidden",
                         WebkitBackfaceVisibility: "hidden",
@@ -86,7 +86,7 @@ export default function SwipeCard({ question, onSwipe, onReveal, currentIndex, t
 
                 {/* Back Side (Revealed Question) */}
                 <div
-                    className="absolute w-full h-full bg-gradient-to-br from-pink-500 to-pink-600 rounded-3xl shadow-2xl flex items-center justify-center p-8"
+                    className="absolute w-full h-full bg-gradient-to-br from-pink-500 to-pink-600 rounded-3xl shadow-2xl flex items-center justify-center p-6 sm:p-8"
                     style={{
                         backfaceVisibility: "hidden",
                         WebkitBackfaceVisibility: "hidden",
